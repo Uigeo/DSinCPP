@@ -16,15 +16,27 @@ class ArrayQueue{
 	ArrayQueue(){front = 0 ; rear = 0 ;};
 	~ArrayQueue(){};
 
-	bool isEmpty(){return rear == 0 };
-	bool isPull(){return fornt == rear};
+	bool isEmpty(){return rear == front;};
+	bool isFull(){return (rear+1)%MAX_QUEUE_SIZE == front;};
 
-	void push(){
-
+	void enqueue(int e){
+		if(isFull()){
+			error("This Queue is full");
+		}
+		else{
+			rear = (rear+1)%MAX_QUEUE_SIZE;
+			data[rear] = 0;
+		}
 	}
-	
-	void pop(){
 
+	int dequeue(){
+		if(isEmpty()){
+			error("This Queue is empty");
+		}
+		else{
+			front = (front+1)%MAX_QUEUE_SIZE;
+			return data[front];
+		}
 	}
 
 	void display(){

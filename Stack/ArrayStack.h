@@ -1,8 +1,10 @@
 #include <cstdio>
 #include <cstdlib>
+#include <iostream>
+using namespace std;
 
 inline void error(char *message){
-  printf("%s\n",message );
+  cout << "message" << endl;
   exit(1);
 }
 
@@ -14,10 +16,10 @@ class ArrayStack{
   int data[MAX_STACK_SIZE];
 
 public:
-  ArrayStack(){top =1};
+  ArrayStack(){top =-1;};
   ~ArrayStack(){};
-  bool isFull(){return top == MAX_STACK_SIZE};
-  bool isEmpty(){return top == -1};
+  bool isFull(){return top == MAX_STACK_SIZE;};
+  bool isEmpty(){return top == -1;};
 
   void push(int e){
     if(isFull()) error("Stack Full Error");
@@ -34,11 +36,15 @@ public:
     return data[top];
   }
 
-  void display(){
-    printf("# of Element in stack %d\n", top+1 );
-    for(int i =0 ; i <= top ; i++)
-      printf("%2d\n", data[i] );
-
-    printf("\n");
+  int getTop(){
+    return top;
   }
-}
+
+  void display(){
+    cout << "# of Elements in stack" << top+1 <<endl;
+    for(int i =0 ; i <= top ; i++)
+      cout << data[i] << endl;
+
+    cout << endl;
+  }
+};
