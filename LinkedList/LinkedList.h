@@ -33,7 +33,7 @@ public:
 
   Node* remove(int pos){
     Node* prev = getEntry(pos-1);
-    return prev->remove();
+    return prev->removeNext();
   }
 
   Node* find(int val){
@@ -53,7 +53,7 @@ public:
 
   int size(){
     int count =0;
-    for(Node* cur = getHead() ; cur != NULL ; cur = cur->getLink()){
+    for(Node* cur = getHead() ; cur != NULL ; cur = cur->getLink())
       count += 1;
 
     return count;

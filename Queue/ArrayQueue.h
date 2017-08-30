@@ -40,6 +40,6 @@ class ArrayQueue{
 	}
 
 	void display(){
-
+		
 	}
 }
