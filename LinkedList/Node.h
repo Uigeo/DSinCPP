@@ -1,9 +1,11 @@
 #include <iostream>
 using namespace std;
 
+typedef int Element;
+
 class Node {
   Node* link;
-  int data;
+  Element data;
 
 public:
   Node(int val =0) : data(val), link(NULL) {}
@@ -11,6 +13,8 @@ public:
   void setLink(Node* next) {link = next;}
   void display() {cout << "[" <<data << "],";}
   bool hasData(int val) {return val ==data;}
+  Element getData() { return data; }
+  void setData(Element data) {this.data = data}
 
   void insertNext(Node* n){
     if( n != NULL){
