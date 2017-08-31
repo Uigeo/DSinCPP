@@ -7,7 +7,7 @@ public:
   LinkedListStack() : top(0){
 
   }
-  ~LinkedListSatck() {
+  ~LinkedListStack() {
 
   }
 
