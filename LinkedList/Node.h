@@ -14,20 +14,6 @@ public:
   void display() {cout << "[" <<data << "],";}
   bool hasData(int val) {return val ==data;}
   Element getData() { return data; }
-  void setData(Element data) {this.data = data}
+  void setData(Element data) {this->data = data;}
 
-  void insertNext(Node* n){
-    if( n != NULL){
-      n->link = link;
-      link = n;
-    }
-  }
-
-  Node* removeNext(){
-    Node* removed = link;
-    if( n != NULL){
-      link = removed->link;
-    }
-    return removed;
-  }
 };

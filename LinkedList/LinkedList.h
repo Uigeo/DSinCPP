@@ -14,12 +14,12 @@ public:
   }
 
   bool isEmpty(){
-    return org.getHead() == NULL;
+    return getHead() == NULL;
   }
 
   Node* getEntry(int pos){
     Node* temp = &org;
-    for(int i =1 ; i < pos ; i++ , temp = temp->link)
+    for(int i =1 ; i < pos ; i++ , temp = temp->getLink())
       if(temp == NULL) break;
 
     return temp;
@@ -27,16 +27,22 @@ public:
 
   void insert(int pos, Node* n){
     Node* prev = getEntry(pos-1);
-    if(prev != NULL)
-      prev->insertNext(n);
+    if(prev != NULL){
+      n->setLink(prev->getLink());
+      prev->setLink(n);
+    }
   }
 
   Node* remove(int pos){
     Node* prev = getEntry(pos-1);
-    return prev->removeNext();
+    Node* removed = prev->getLink();
+
+    prev->setLink(removed->getLink());
+
+    return removed;
   }
 
-  Node* find(int val){
+  Node* find(Element val){
     for(Node* p = getHead() ; p != NULL ; p = p->getLink())
       if(p->hasData(val)) return p;
 
@@ -45,9 +51,11 @@ public:
 
   void replace(int pos, Node *n){
     Node* prev = getEntry(pos-1);
+    Node* replaced = prev->getLink();
     if(prev != NULL){
-      delete prev->removeNext();
-      prev->insertNext(n);
+      prev->setLink(n);
+      n->setLink(replaced->getLink());
+      delete replaced;
     }
   }
 
@@ -67,4 +75,4 @@ public:
     cout << endl;
   }
 
-}
+};

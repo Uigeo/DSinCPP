@@ -4,8 +4,8 @@ class LinkedListStack {
   Node top;
 
 public:
-  LinkedListStack() {
-    top(0);
+  LinkedListStack() : top(0){
+
   }
   ~LinkedListSatck() {
 
